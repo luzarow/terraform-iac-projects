@@ -1,7 +1,7 @@
 # Create security group for EC2 instance
 resource "aws_security_group" "terraform_sg" {
-  name_prefix = "terraform-lab-sg-"
-  description = "Security group for Terraform lab EC2 instance"
+  name_prefix = "terraform-sg-"
+  description = "Security group for Terraform Project EC2 instance"
   vpc_id      = data.aws_vpc.default.id
 
   # Allow SSH access
@@ -31,7 +31,7 @@ resource "aws_security_group" "terraform_sg" {
   }
 
   tags = {
-    Name        = "terraform-lab-sg"
+    Name        = "terraform-sg"
     Environment = var.environment
     CreatedBy   = "Terraform"
   }

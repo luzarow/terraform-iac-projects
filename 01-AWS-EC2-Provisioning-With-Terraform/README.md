@@ -1,52 +1,58 @@
-# Terraform AWS EC2 Infrastructure Lab
+# Terraform AWS Infrastructure Provisioning with EC2
 
-A production-style Infrastructure as Code (IaC) project built with Terraform to provision and manage AWS infrastructure using modular and organized Terraform configurations.
+Production-oriented Infrastructure as Code (IaC) project using Terraform to provision and manage AWS infrastructure in a structured, scalable, and maintainable manner.
 
-This project demonstrates foundational DevOps and cloud engineering practices including Terraform workflows, AWS resource provisioning, infrastructure modularization, state management, and reusable configuration design.
+This project demonstrates foundational cloud engineering and DevOps practices including Terraform-based infrastructure provisioning, AWS resource management, configuration modularization, state management, reusable variables, and automated EC2 bootstrapping.
 
 ---
 
-# Project Overview
+# Overview
 
-This Terraform project provisions:
+This repository contains Terraform configurations for deploying AWS infrastructure components required to provision a Linux-based EC2 instance with automated web server configuration.
 
-* AWS EC2 Instance
-* AWS Security Group
-* Default VPC and Subnet integration
-* Apache Web Server installation using EC2 User Data
-* Dynamic AMI lookup using Terraform Data Sources
-* Output values for infrastructure visibility
+The project is designed to reflect real-world Infrastructure as Code workflows and Terraform project organization standards commonly used in DevOps and cloud engineering environments.
 
-The project follows Terraform best practices by separating infrastructure into multiple logical configuration files for maintainability and scalability.
+---
+
+# Infrastructure Components
+
+The following AWS resources are provisioned and managed through Terraform:
+
+* EC2 Instance
+* Security Group
+* Default VPC Integration
+* Default Subnet Integration
+* Dynamic Amazon Linux 2 AMI Lookup
+* Apache HTTP Server Installation via User Data
 
 ---
 
 # Architecture
 
-```text
+```text id="z48fr2"
 Terraform Configuration
         │
         ▼
-AWS Provider
+Terraform AWS Provider
         │
         ▼
-┌─────────────────────────────┐
-│       AWS Infrastructure    │
-├─────────────────────────────┤
-│  Default VPC                │
-│  Default Subnet             │
-│  Security Group             │
-│  EC2 Instance               │
-│  Apache HTTP Server         │
-└─────────────────────────────┘
+┌───────────────────────────────────┐
+│          AWS Infrastructure       │
+├───────────────────────────────────┤
+│  Default VPC                      │
+│  Default Subnet                   │
+│  Security Group                   │
+│  EC2 Instance                     │
+│  Apache HTTP Server               │
+└───────────────────────────────────┘
 ```
 
 ---
 
-# Project Structure
+# Repository Structure
 
-```text
-terraform-lab/
+```text id="sov2ow"
+terraform-aws-ec2-lab/
 │
 ├── main.tf
 ├── variables.tf
@@ -59,169 +65,187 @@ terraform-lab/
 
 ---
 
-# Terraform Configuration Breakdown
+# Configuration Design
 
-| File                | Purpose                                    |
-| ------------------- | ------------------------------------------ |
-| `main.tf`           | Configures Terraform and AWS provider      |
-| `variables.tf`      | Defines reusable input variables           |
-| `data.tf`           | Fetches existing AWS resources dynamically |
-| `security.tf`       | Creates AWS Security Group                 |
-| `ec2.tf`            | Creates and configures EC2 instance        |
-| `outputs.tf`        | Displays infrastructure outputs            |
+| File           | Responsibility                       |
+| -------------- | ------------------------------------ |
+| `main.tf`      | Terraform and provider configuration |
+| `variables.tf` | Input variable declarations          |
+| `data.tf`      | Existing AWS resource discovery      |
+| `security.tf`  | Security Group definitions           |
+| `ec2.tf`       | EC2 instance provisioning            |
+| `outputs.tf`   | Infrastructure output values         |
 
 ---
 
-# Features
+# Key Technical Implementations
 
-* Infrastructure as Code using Terraform
-* AWS Provider integration
-* Dynamic AMI retrieval
-* Reusable variable-based configuration
-* Security Group management
-* Automated Apache installation with User Data
-* Terraform state management
-* Infrastructure planning and lifecycle management
-* Environment-ready directory structure
+## Infrastructure as Code (IaC)
+
+Infrastructure provisioning and lifecycle management are fully automated using declarative Terraform configurations.
+
+---
+
+## Dynamic Resource Discovery
+
+Terraform Data Sources are used to dynamically retrieve:
+
+* Latest Amazon Linux 2 AMI
+* Default AWS VPC
+* Default Subnet
+
+This approach avoids hardcoded infrastructure values and improves portability and maintainability.
+
+---
+
+## Automated EC2 Bootstrapping
+
+The EC2 instance uses User Data scripts to automatically:
+
+* Update system packages
+* Install Apache HTTP Server
+* Enable and start services
+* Deploy a basic web page
+
+---
+
+## Resource Dependency Management
+
+Terraform automatically builds and manages resource dependency graphs between:
+
+* VPC
+* Subnet
+* Security Group
+* EC2 Instance
+
+This ensures infrastructure is provisioned in the correct order.
 
 ---
 
 # Technologies Used
 
-* Terraform
-* AWS EC2
-* AWS VPC
-* AWS Security Groups
-* Linux
-* Apache HTTP Server
-* HashiCorp Configuration Language (HCL)
+| Technology          | Purpose                          |
+| ------------------- | -------------------------------- |
+| Terraform           | Infrastructure provisioning      |
+| AWS EC2             | Compute resources                |
+| AWS VPC             | Networking                       |
+| AWS Security Groups | Network access control           |
+| HCL                 | Terraform configuration language |
+| Linux               | Operating system environment     |
+| Apache HTTP Server  | Web server                       |
 
 ---
 
 # Prerequisites
 
-Before running this project, ensure the following are installed and configured:
+The following are required before deployment:
 
 * Terraform >= 1.0
 * AWS CLI
-* AWS Account with programmatic access
-* Linux-based system or WSL
+* AWS Account
+* IAM User with programmatic access
 * Configured AWS credentials
+* Linux/WSL environment
 
 ---
 
-# Installation
+# AWS Credential Configuration
 
-## Clone Repository
+Configure AWS credentials locally:
 
-```bash
-git clone https://github.com/your-username/terraform-aws-ec2-lab.git
-cd terraform-aws-ec2-lab
-```
-
----
-
-# Configure AWS Credentials
-
-```bash
+```bash id="d70s1l"
 aws configure
 ```
 
-Provide:
+Required inputs:
 
 * AWS Access Key ID
 * AWS Secret Access Key
-* AWS Region
-* Output format
+* Default Region
+* Output Format
 
 ---
 
-# Terraform Workflow
+# Deployment Workflow
 
 ## Initialize Terraform
 
-```bash
+```bash id="a1zth7"
 terraform init
 ```
+
+Downloads required provider plugins and initializes the working directory.
 
 ---
 
 ## Validate Configuration
 
-```bash
+```bash id="pc3lsk"
 terraform validate
 ```
 
+Performs syntax and configuration validation.
+
 ---
 
-## Format Terraform Files
+## Format Configuration Files
 
-```bash
+```bash id="5f2mw0"
 terraform fmt
 ```
+
+Applies standard Terraform formatting conventions.
 
 ---
 
 ## Generate Execution Plan
 
-```bash
+```bash id="5lmv3p"
 terraform plan
 ```
 
+Displays infrastructure changes before deployment.
+
 ---
 
-## Apply Infrastructure
+## Provision Infrastructure
 
-```bash
+```bash id="8pnjmh"
 terraform apply
 ```
 
+Creates infrastructure resources within AWS.
+
 ---
 
-## View Outputs
+## Retrieve Outputs
 
-```bash
+```bash id="1mr9dk"
 terraform output
 ```
+
+Displays generated infrastructure outputs including public IP and DNS.
 
 ---
 
 ## Destroy Infrastructure
 
-```bash
+```bash id="xtlb1e"
 terraform destroy
 ```
 
----
-
-# Infrastructure Resources Created
-
-## AWS EC2 Instance
-
-* Amazon Linux 2
-* Apache Web Server
-* Public IP enabled
-* User Data bootstrapping
+Removes all Terraform-managed infrastructure resources.
 
 ---
 
-## AWS Security Group
+# Example Outputs
 
-Allows:
-
-* SSH (Port 22)
-* HTTP (Port 80)
-
----
-
-# Example User Data Configuration
-
-The EC2 instance automatically:
-
-* Updates system packages
-* Installs Apache HTTP Server
-* Starts and enables Apache service
-* Creates a sample HTML page
+```bash id="d4m3hv"
+instance_id         = "i-xxxxxxxxxxxxx"
+instance_public_ip  = "x.x.x.x"
+instance_public_dns = "ec2-x-x-x-x.compute.amazonaws.com"
+website_url         = "http://x.x.x.x"
+```
 
 ---
 
@@ -231,76 +255,83 @@ This project demonstrates practical implementation of:
 
 * Infrastructure as Code (IaC)
 * Terraform Providers
-* Variables
-* Data Sources
-* Resources
-* Outputs
-* Dependency Graphs
-* State Management
-* Infrastructure Lifecycle Management
+* Terraform Variables
+* Terraform Data Sources
+* Terraform Resources
+* Terraform Outputs
+* Terraform State Management
+* Dependency Resolution
+* Declarative Infrastructure Provisioning
 
 ---
 
-# Security Considerations
+# Security Notes
 
-This project is intended for learning and demonstration purposes.
+This project is intended for educational and demonstration purposes.
 
-For production environments:
+Current security group rules allow inbound access from all IP addresses:
 
-* Restrict SSH access to trusted IP ranges
+* SSH (22)
+* HTTP (80)
+
+For production-grade environments:
+
+* Restrict SSH access using trusted CIDR ranges
 * Use IAM Roles instead of static credentials
 * Store Terraform state remotely
 * Enable state locking
-* Use private subnets where applicable
-* Implement least privilege IAM policies
+* Use private networking architecture
+* Implement least-privilege IAM policies
 
 ---
 
-# Learning Outcomes
+# Engineering Best Practices Applied
 
-Through this project, the following DevOps and Cloud Engineering concepts are practiced:
-
-* Terraform project structuring
-* AWS infrastructure provisioning
-* Infrastructure automation
-* Declarative infrastructure management
-* Resource dependency handling
-* Cloud security fundamentals
-* Infrastructure lifecycle operations
+* Logical Terraform file separation
+* Reusable variable-driven configuration
+* Dynamic infrastructure lookup
+* Declarative infrastructure provisioning
+* Infrastructure lifecycle management
+* Consistent resource tagging
+* Environment-ready repository structure
 
 ---
 
-# Future Improvements
+# Future Enhancements
 
-Potential enhancements include:
+Potential enterprise-level improvements include:
 
-* Remote backend using S3
-* DynamoDB state locking
-* Terraform modules
+* Remote backend using Amazon S3
+* State locking with DynamoDB
+* Terraform module abstraction
 * Multi-environment deployments
 * CI/CD integration
 * Auto Scaling Groups
 * Load Balancer integration
-* VPC customization
-* Monitoring with CloudWatch
+* Custom VPC implementation
+* Monitoring and observability integration
+* Infrastructure policy enforcement
 
 ---
 
-# Screenshots / Outputs
+# Learning Objectives
 
-Example Terraform output:
+This project reinforces practical understanding of:
 
-```bash
-instance_public_ip = "x.x.x.x"
-website_url        = "http://x.x.x.x"
-```
+* Terraform workflows
+* AWS infrastructure automation
+* Infrastructure state management
+* Cloud networking fundamentals
+* Infrastructure dependency modeling
+* Automated provisioning strategies
+* DevOps engineering practices
 
 ---
 
 # Author
 
-**Your Name**
-DevOps & Cloud Engineering Enthusiast
+**Abdul Mateen**
+DevOps Engineer | Cloud Infrastructure Enthusiast
 
 ---
 
@@ -310,8 +341,8 @@ This project is licensed under the MIT License.
 
 ---
 
-# Acknowledgements
+# References
 
-* HashiCorp Terraform
+* Terraform by HashiCorp
 * Amazon Web Services (AWS)
-* Infrastructure as Code Community
+* Infrastructure as Code (IaC) Principles
