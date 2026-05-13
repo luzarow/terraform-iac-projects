@@ -1,4 +1,4 @@
-# 🚀 Terraform AWS Modular Infrastructure
+# Terraform AWS Modular Infrastructure
 
 > Production-grade, modular AWS infrastructure provisioning using Terraform — designed with scalability, reusability, and real-world DevOps engineering practices in mind.
 
@@ -11,7 +11,7 @@
 
 ---
 
-# 📌 Overview
+# Overview
 
 This project demonstrates a **production-inspired AWS Infrastructure-as-Code (IaC) architecture** built using **Terraform** with a strong focus on:
 
@@ -26,7 +26,7 @@ The infrastructure is structured to reflect how modern engineering teams provisi
 
 ---
 
-# 🏗️ Infrastructure Architecture
+# Infrastructure Architecture
 
 The project follows a **layered modular architecture** where each infrastructure component is isolated into reusable Terraform modules.
 
@@ -51,7 +51,7 @@ The project follows a **layered modular architecture** where each infrastructure
 
 ---
 
-# 🧠 Key Engineering Concepts
+# Key Engineering Concepts
 
 This project demonstrates several industry-standard DevOps and Cloud Engineering concepts:
 
@@ -68,7 +68,7 @@ This project demonstrates several industry-standard DevOps and Cloud Engineering
 
 ---
 
-# ☁️ AWS Services Used
+# AWS Services Used
 
 | Service              | Purpose                         |
 | -------------------- | ------------------------------- |
@@ -81,7 +81,7 @@ This project demonstrates several industry-standard DevOps and Cloud Engineering
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```bash
 02-Terraform-AWS-Modular-Infra/
@@ -105,9 +105,9 @@ This project demonstrates several industry-standard DevOps and Cloud Engineering
 
 ---
 
-# 🧩 Module Breakdown
+# Module Breakdown
 
-## 📌 VPC Module
+##  VPC Module
 
 Responsible for provisioning the complete networking layer.
 
@@ -136,7 +136,7 @@ public_subnet_ids
 
 ---
 
-## 🔐 Security Group Module
+## Security Group Module
 
 Implements network access control for compute resources.
 
@@ -161,7 +161,7 @@ security_group_id
 
 ---
 
-## 🖥️ EC2 Module
+## EC2 Module
 
 Deploys compute instances inside the configured VPC.
 
@@ -183,7 +183,7 @@ private_ip
 
 ---
 
-## 🗄️ S3 Module
+## S3 Module
 
 Creates a versioned and environment-aware storage bucket.
 
@@ -202,7 +202,7 @@ bucket_id
 
 ---
 
-# 🌍 Environment Design
+# Environment Design
 
 The infrastructure uses **environment-based separation** to support scalable deployments.
 
@@ -222,7 +222,7 @@ The `dev` environment acts as a sandbox for:
 
 ---
 
-# ⚙️ Development Environment Configuration
+# Development Environment Configuration
 
 ## Provider Configuration
 
@@ -242,9 +242,9 @@ aws_region = "us-east-1"
 
 ---
 
-# 🚀 Deployment Workflow
+# Deployment Workflow
 
-## 1️⃣ Initialize Terraform
+## Initialize Terraform
 
 ```bash
 terraform init
@@ -254,7 +254,7 @@ Downloads required providers and initializes the working directory.
 
 ---
 
-## 2️⃣ Validate Configuration
+## Validate Configuration
 
 ```bash
 terraform validate
@@ -264,7 +264,7 @@ Checks Terraform syntax and configuration validity.
 
 ---
 
-## 3️⃣ Format Terraform Files
+## Format Terraform Files
 
 ```bash
 terraform fmt -recursive
@@ -274,7 +274,7 @@ Applies consistent formatting across all Terraform files.
 
 ---
 
-## 4️⃣ Review Execution Plan
+## Review Execution Plan
 
 ```bash
 terraform plan
@@ -284,7 +284,7 @@ Displays infrastructure changes before deployment.
 
 ---
 
-## 5️⃣ Deploy Infrastructure
+## Deploy Infrastructure
 
 ```bash
 terraform apply
@@ -298,7 +298,7 @@ yes
 
 ---
 
-# 📤 Infrastructure Outputs
+# Infrastructure Outputs
 
 After successful deployment, Terraform returns:
 
@@ -310,7 +310,7 @@ After successful deployment, Terraform returns:
 
 ---
 
-# 🔒 Security Considerations
+# Security Considerations
 
 This project incorporates foundational cloud security practices:
 
@@ -324,9 +324,9 @@ This project incorporates foundational cloud security practices:
 
 ---
 
-# 📈 What This Project Demonstrates
+# What This Project Demonstrates
 
-## 🧠 Terraform Engineering Skills
+## Terraform Engineering Skills
 
 * Modular Terraform architecture
 * Variable abstraction
@@ -337,7 +337,7 @@ This project incorporates foundational cloud security practices:
 
 ---
 
-## ☁️ AWS Cloud Skills
+## AWS Cloud Skills
 
 * VPC networking
 * Public subnet architecture
@@ -348,7 +348,7 @@ This project incorporates foundational cloud security practices:
 
 ---
 
-## ⚙️ DevOps Practices
+## DevOps Practices
 
 * Infrastructure as Code (IaC)
 * Declarative infrastructure management
@@ -358,7 +358,7 @@ This project incorporates foundational cloud security practices:
 
 ---
 
-# 🛠️ Future Enhancements
+# Future Enhancements
 
 The current architecture is intentionally minimal and extensible.
 
@@ -377,7 +377,7 @@ Potential production-grade improvements include:
 
 ---
 
-# 🧪 Example Terraform Commands
+# Example Terraform Commands
 
 ```bash
 # Initialize
@@ -401,7 +401,7 @@ terraform destroy
 
 ---
 
-# 📚 Tech Stack
+# ech Stack
 
 | Category         | Technology      |
 | ---------------- | --------------- |
@@ -415,7 +415,7 @@ terraform destroy
 
 ---
 
-# 🎯 Project Goals
+# Project Goals
 
 This project was built to simulate how infrastructure is designed inside modern cloud engineering and DevOps teams by emphasizing:
 
@@ -427,27 +427,27 @@ This project was built to simulate how infrastructure is designed inside modern 
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-### DevOps Infrastructure Engineering Project
+### Abdul Mateen - DevOps Infrastructure Engineering Project
 
 Designed and implemented as a hands-on Terraform + AWS portfolio project demonstrating modular infrastructure provisioning and cloud architecture best practices.
 
 ---
 
-# ⭐ Final Thoughts
+# Final Thoughts
 
 This repository is intentionally designed to balance:
 
-✅ Simplicity for learning
-✅ Production-inspired architecture
-✅ Modular scalability
-✅ Real-world DevOps practices
+ Simplicity for learning
+ Production-inspired architecture
+ Modular scalability
+ Real-world DevOps practices
 
 It serves as an excellent foundation for expanding into advanced cloud-native and enterprise-grade infrastructure workflows.
 
 ---
 
-# 📜 License
+# License
 
 This project is open-source and available under the MIT License.
